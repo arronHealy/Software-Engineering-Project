@@ -1,0 +1,34 @@
+%div#page-content
+    %h1.text-center.mt-1 Edit Article
+
+    %div.container
+        %div.row.justify-content-center
+            %div.col-10
+                = form_tag article_path(@article), :class => 'shadow p-3 mb-3 bg-dark rounded', :method => :put do
+
+                    %div.form-group.row
+                        = label :article, :creator, 'Creator', :class => 'col-2 col-form-label text-light'
+                        %div.col-10
+                            = text_field :article, 'creator', :class => 'form-control shadow rounded', :placeholder => 'Article Creator'
+
+                    %div.form-group.row
+                        = label :article, :title, 'Title', :class => 'col-2 col-form-label text-light'
+                        %div.col-10
+                            = text_field :article, 'title', :class => 'form-control shadow rounded', :placeholder => 'Article Title'
+
+
+                    %div.form-group.row
+                        = label :article, :description, 'Description', :class => 'col-2 col-form-label text-light'
+                        %div.col-10
+                            = text_area :article, 'description', :rows => 10, :class => 'form-control shadow rounded', :placeholder => 'Article Description'
+
+                    
+                    %div.form-group.row.justify-content-center
+                        = submit_tag 'Update Article', :class => 'btn btn-outline-light btn-lg'
+
+                    %br/
+        
+        = link_to '[ Back to articles list ]', articles_path, :class => 'text-center'
+
+        %br/
+        %br/

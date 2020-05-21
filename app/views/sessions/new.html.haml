@@ -1,0 +1,34 @@
+%div#page-content
+    %h1.text-center.mt-1 Login to Wiki-Blog
+
+    %div.container
+        %div.row.justify-content-center.mt-4
+            %div.col-10
+                = form_tag login_path, :class => 'shadow p-3 mb-3 bg-dark rounded' do
+
+                    %div.form-group.row.mt-4
+                        = label :user, :email, 'Email', :class => 'col-2 col-form-label text-light'
+                        %div.col-10
+                            = text_field :user, 'email', :class => 'form-control shadow rounded', :placeholder => 'Enter your Email'
+
+                    %br/
+
+                    %div.form-group.row
+                        = label :user, :password, 'Password', :class => 'col-2 col-form-label text-light'
+                        %div.col-10
+                            = password_field :user, 'password', :class => 'form-control shadow rounded', :placeholder => 'Enter your Password'
+                    
+                    %br/
+                    %br/
+
+                    %div.form-group.row.justify-content-center.mt-4
+                        = submit_tag 'Login', :class => 'btn btn-outline-light btn-lg'
+
+                    %br/
+                    %br/
+                    %br/
+        
+        = link_to '[ Back to articles list ]', articles_path
+
+        %br/
+        %br/

@@ -1,0 +1,32 @@
+%div#page-content
+    %h1.text-center.mt-1 #{@article.title}
+
+    %div.row.justify-content-md-center
+        %div.col-8.mt-4
+            %div.card.text-center.mt-4.shadow.mb-5.bg-white.rounded
+                %div.card-header.font-italic
+                    by #{@article.creator}
+                %div.card-body
+                    %div.card-text.text-left
+                        = simple_format(@article.description)
+                    = link_to 'Edit', edit_article_path(@article), :class => 'btn btn-outline-success'
+                    = link_to 'Delete', article_path(@article), :method => :delete, data: {confirm: "Are you sure?"}, :class => 'btn btn-outline-danger'
+                    %hr
+                    = link_to 'Find Articles With Same Creator', search_creators_path(@article), :class => 'btn btn-outline-info'
+                %div.card-footer.text-muted
+                    %small
+                        Created -
+                    %small 
+                        = @article.created_at.strftime("%B %d, %Y")
+                    %small 
+                        | Edited -
+                    %small 
+                        = @article.updated_at.strftime("%B %d, %Y")
+
+            %hr/
+
+            %br/
+            %br/
+            %br/
+            %br/
+            %br/

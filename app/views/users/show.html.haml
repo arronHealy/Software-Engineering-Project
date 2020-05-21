@@ -1,0 +1,28 @@
+%div#page-content
+    %br/
+    %br/
+
+    %h1.text-center.mt-1 Wiki-Blogger Profile
+
+    %hr/
+
+    %h3.text-center.mt-1 Email:  #{@user.email}
+
+    %br/
+
+    %h4.text-center.mt-1 Joined: #{@user.created_at.strftime("%B %d, %Y")}
+
+    %br/
+
+    = get_gravatar @user, size: 200
+
+    %p.text-center.mt-4
+        - if session[:user_id] == @user.id
+            = link_to 'Edit Profile', edit_user_path(@user), :class => 'btn btn-outline-success'
+
+    %hr/
+
+    = link_to '[ Back to bloggers list ]', users_path
+
+    %br/
+    %br/

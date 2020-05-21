@@ -1,0 +1,41 @@
+!!! 5
+%html
+  %head
+    %link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous")
+    %title Wiki-Blog
+    = stylesheet_link_tag 'application', 'media' => 'all'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+
+    %body.d-flex.flex-column
+      %div.container
+        %nav.navbar.navbar-expand-lg.bg-dark.text-white
+          = link_to 'Wiki-Blog', root_path, :class => 'navbar-brand text-white'
+          %div.collapse.navbar-collapse
+            %ul.navbar-nav.mr-auto
+              %li.nav-item.active
+                = link_to 'Bloggers', users_path, :class => 'nav-link text-white'
+              %li.nav-item.active
+                = link_to 'Articles Feed', articles_path, :class => 'nav-link text-white'
+              - if session[:user_id]
+                %li.nav-item
+                  = link_to 'Create Article', new_article_path, :class => 'nav-link text-white'
+              - if not session[:user_id]
+                %li.nav-item
+                  = link_to 'Login', login_path, :class => 'nav-link text-white'
+              - if session[:user_id]
+                %li.nav-item
+                  = link_to 'Logout', logout_path, :method => :delete, :class => 'nav-link text-white'
+        #main
+          - if flash[:notice]
+            %div.alert.alert-danger
+              #notice.message= flash[:notice]
+          - elsif flash[:warning]
+            %div.alert.alert-success
+              #warning.message= flash[:warning]
+
+          = yield
+
+        %footer.py-4.bg-dark.text-white#sticky-footer
+          %div.container.text-center
+            %small Copyright &copy; Wiki-Blog
